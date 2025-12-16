@@ -6,6 +6,7 @@ import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
 import { ContactFormData, FormStatus } from '@/lib/types';
 import { CheckCircle2, Send, Clock, ShieldCheck } from 'lucide-react';
+import { sendEmail } from '@/app/actions';
 
 const benefits = [
   { icon: Clock, text: '24-hour response time' },
@@ -21,17 +22,23 @@ export default function StartProjectPage() {
     service: '',
     message: ''
   });
-  const [status, setStatus] = useState<FormStatus>('idle');
+  const [status, setStatus] = useState<FormStatus | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
+    setErrorMessage('');
 
-    // Simulate form submission
-    setTimeout(() => {
+    const result = await sendEmail(formData);
+
+    if (result.success) {
       setStatus('success');
       setFormData({ name: '', email: '', company: '', service: '', message: '' });
-    }, 1500);
+    } else {
+      setStatus('error');
+      setErrorMessage(result.message || 'Something went wrong');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -252,6 +259,16 @@ export default function StartProjectPage() {
                         <p className="text-sm">We'll be in touch within 24 hours.</p>
                       </div>
                     </div>
+                  </motion.div>
+                )}
+                {status === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800"
+                  >
+                    <p className="font-bold">Error Sending Request</p>
+                    <p className="text-sm">{errorMessage}</p>
                   </motion.div>
                 )}
               </form>
