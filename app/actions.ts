@@ -24,7 +24,7 @@ export async function sendEmail(formData: ContactFormData): Promise<ActionState>
         console.log('Sending via Resend to:', ['labeeb@narratv.space', 'labeebchlkn@gmail.com']);
 
         const data = await resend.emails.send({
-            from: 'Narratv Space Web <onboarding@resend.dev>',
+            from: 'Narratv Space Web <contact@narratv.space>',
             to: ['labeeb@narratv.space', 'labeebchlkn@gmail.com'],
             subject: `New Project Inquiry: ${name} from ${company}`,
             react: ProjectInquiryEmail({ name, email, company, service, message }),
