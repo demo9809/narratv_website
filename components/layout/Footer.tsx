@@ -33,9 +33,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-4">
             <Link href="/" className="inline-block mb-8">
-              <span className="text-3xl font-bold tracking-tight text-white">
-                Narratv<span className="text-primary">.</span>
-              </span>
+              <img src="/logo-light.png" alt="Narratv" className="h-10 w-auto object-contain" />
             </Link>
             <p className="text-gray-400 mb-8 max-w-sm text-lg font-light leading-relaxed">
               We help ambitious brands tell stories that matter, turning passive audiences into loyal advocates.

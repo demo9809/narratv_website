@@ -49,10 +49,12 @@ export default function Navigation() {
           >
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <Link href="/" className="flex items-center group">
-                <span className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${scrolled ? 'text-slate-900' : 'text-white'}`}>
-                  Narratv<span className="text-primary">.</span>
-                </span>
+              <Link href="/" className="flex items-center gap-2 relative z-50">
+                <img
+                  src={scrolled || pathname !== '/' ? '/logo-dark.png' : '/logo-light.png'}
+                  alt="Narratv"
+                  className="h-8 w-auto object-contain"
+                />
               </Link>
 
               {/* Desktop Navigation */}
@@ -62,8 +64,8 @@ export default function Navigation() {
                     key={link.href}
                     href={link.href}
                     className={`text-sm font-medium transition-all duration-300 relative group ${pathname === link.href
-                        ? 'text-primary'
-                        : scrolled ? 'text-gray-600 hover:text-slate-900' : 'text-gray-300 hover:text-white'
+                      ? 'text-primary'
+                      : scrolled ? 'text-gray-600 hover:text-slate-900' : 'text-gray-300 hover:text-white'
                       }`}
                   >
                     {link.label}
