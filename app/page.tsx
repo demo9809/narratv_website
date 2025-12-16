@@ -1,103 +1,252 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Section from '@/components/ui/Section';
+import Button from '@/components/ui/Button';
+import ServiceCard from '@/components/ui/ServiceCard';
+import { services, stats, testimonials, caseStudies } from '@/lib/data';
+import { ArrowRight, Star, ChevronRight, CheckCircle2 } from 'lucide-react';
+
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Hero Section - Dark Theme for Impact */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] animate-blob" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] animate-blob animation-delay-4000" />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <div className="relative z-10 container-custom text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-5xl mx-auto"
+          >
+            <span className="inline-block py-2 px-4 rounded-full bg-white/10 border border-white/10 text-white text-sm font-medium mb-8 backdrop-blur-sm">
+              The Digital Storytelling Agency
+            </span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-white leading-[1.1] tracking-tight">
+              Crafting Brands That <br />
+              <span className="text-primary">Defy Gravity.</span>
+            </h1>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed"
+          >
+            We blend strategic thinking with cinematic visuals to create digital experiences that resonate, inspire, and convert.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <Link href="/start-project">
+              <Button size="lg" variant="primary" className="shadow-xl shadow-primary/20">
+                Start Your Journey
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+            <Link href="/portfolio">
+              <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10">
+                View Our Work
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section - Light Theme for Readability */}
+      <Section background="primary" className="border-b border-gray-100">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="text-center"
+            >
+              <div className="text-5xl md:text-6xl font-bold text-slate-900 mb-2 font-heading">
+                {stat.value}{stat.suffix}
+              </div>
+              <div className="text-gray-500 font-medium tracking-wide text-sm uppercase">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Services Section - Light Theme */}
+      <Section background="secondary">
+        <div className="text-center mb-20 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+            Comprehensive Expertise
+          </h2>
+          <p className="text-xl text-gray-600 font-light leading-relaxed">
+            From brand identity to performance marketing, we provide the full stack of services needed to scale in the digital age.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.slice(0, 6).map((service, index) => (
+            <ServiceCard key={service.id} service={service} index={index} />
+          ))}
+        </div>
+
+        <div className="text-center mt-16">
+          <Link href="/services">
+            <Button variant="outline" size="lg">View All Services</Button>
+          </Link>
+        </div>
+      </Section>
+
+      {/* Featured Works - Light Theme */}
+      <Section background="primary">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+          <div className="max-w-2xl">
+            <span className="text-primary font-bold tracking-wider uppercase mb-3 block text-sm">Selected Works</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Recent Case Studies</h2>
+            <p className="text-gray-600 text-lg">Real results for ambitious brands.</p>
+          </div>
+          <Link href="/portfolio" className="hidden md:block">
+            <Button variant="outline">View All Projects <ArrowRight className="ml-2 w-4 h-4" /></Button>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {caseStudies.slice(0, 4).map((caseStudy, index) => (
+            <motion.div
+              key={caseStudy.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group cursor-pointer"
+            >
+              <Link href={`/portfolio/${caseStudy.slug}`}>
+                <div className="relative overflow-hidden rounded-2xl aspect-[16/10] mb-6 shadow-sm hover:shadow-xl transition-all duration-300">
+                  <img
+                    src={caseStudy.thumbnail}
+                    alt={caseStudy.title}
+                    className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                </div>
+                <div>
+                  <div className="flex gap-3 mb-3">
+                    {caseStudy.category.slice(0, 2).map(cat => (
+                      <span key={cat} className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/5 px-2 py-1 rounded-md">
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">{caseStudy.title}</h3>
+                  <p className="text-gray-500">{caseStudy.client}</p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center md:hidden">
+          <Link href="/portfolio">
+            <Button variant="outline" className="w-full">View All Projects</Button>
+          </Link>
+        </div>
+      </Section>
+
+      {/* Why Choose Us - Dark Theme Break */}
+      <Section background="dark">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Why Narratv?</h2>
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed font-light">
+              We don't just execute tasks; we act as strategic partners invested in your growth. Our approach combines data-driven insights with world-class creativity.
+            </p>
+            <div className="space-y-4">
+              {[
+                "Data-Driven Creative Strategy",
+                "Full-Funnel Marketing Solutions",
+                "Award-Winning Design Team",
+                "Transparent ROI Reporting"
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <CheckCircle2 className="text-primary w-6 h-6" />
+                  <span className="text-white text-lg">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative h-[500px] bg-slate-800 rounded-2xl overflow-hidden border border-white/10">
+            {/* Placeholder for agency culture/team image */}
+            <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+              Agency Visual / Showreel Overlay
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Testimonials - Light Theme */}
+      <Section background="secondary">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Client Stories</h2>
+          <p className="text-gray-600 text-xl max-w-2xl mx-auto">Don't just take our word for it.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+            >
+              <div className="text-amber-400 mb-6 flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6 leading-relaxed">"{testimonial.quote}"</p>
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 text-sm">
+                  {testimonial.author.charAt(0)}
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900 text-sm">{testimonial.author}</div>
+                  <div className="text-gray-500 text-xs">{testimonial.company}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Final CTA */}
+      <section className="relative py-32 overflow-hidden bg-primary">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+        <div className="container-custom relative z-10 text-center max-w-4xl mx-auto">
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">Ready to launch?</h2>
+          <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto font-medium">
+            Let's build something extraordinary together. Schedule your free consultation today.
+          </p>
+          <Link href="/start-project">
+            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 shadow-2xl scale-110 border-none">
+              Start Your Project Now
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
