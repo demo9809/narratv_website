@@ -17,6 +17,7 @@ import * as React from "react";
 interface ProjectInquiryEmailProps {
     name: string;
     email: string;
+    phone: string;
     company: string;
     service: string;
     message: string;
@@ -25,6 +26,7 @@ interface ProjectInquiryEmailProps {
 export default function ProjectInquiryEmail({
     name,
     email,
+    phone,
     company,
     service,
     message,
@@ -59,6 +61,12 @@ export default function ProjectInquiryEmail({
                                 <Text className="m-0 text-gray-500 text-xs">Email</Text>
                                 <Link href={`mailto:${email}`} className="text-blue-600 text-sm font-medium no-underline">
                                     {email}
+                                </Link>
+                            </div>
+                            <div className="mb-4">
+                                <Text className="m-0 text-gray-500 text-xs">Phone / WhatsApp</Text>
+                                <Link href={`tel:${phone}`} className="text-blue-600 text-sm font-medium no-underline">
+                                    {phone}
                                 </Link>
                             </div>
                             <div className="mb-0">

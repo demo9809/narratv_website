@@ -54,6 +54,7 @@ export interface BlogPost {
 export interface ContactFormData {
   name: string;
   email: string;
+  phone: string;
   company: string;
   service: ServiceType | "";
   message: string;

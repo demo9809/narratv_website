@@ -15,7 +15,7 @@ interface ActionState {
 
 export async function sendEmail(formData: ContactFormData): Promise<ActionState> {
     console.log('Attempting to send email...');
-    const { name, email, company, service, message } = formData;
+    const { name, email, phone, company, service, message } = formData;
 
     if (!process.env.RESEND_API_KEY) {
         console.error('Missing RESEND_API_KEY');
@@ -30,6 +30,7 @@ export async function sendEmail(formData: ContactFormData): Promise<ActionState>
             React.createElement(ProjectInquiryEmail, {
                 name,
                 email,
+                phone,
                 company,
                 service,
                 message

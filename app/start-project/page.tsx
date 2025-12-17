@@ -18,6 +18,7 @@ export default function StartProjectPage() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
+    phone: '',
     company: '',
     service: '',
     message: ''
@@ -34,7 +35,7 @@ export default function StartProjectPage() {
 
     if (result.success) {
       setStatus('success');
-      setFormData({ name: '', email: '', company: '', service: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
     } else {
       setStatus('error');
       setErrorMessage(result.message || 'Something went wrong');
@@ -162,6 +163,22 @@ export default function StartProjectPage() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-slate-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 placeholder-gray-400"
                       placeholder="john@company.com"
+                    />
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Phone / WhatsApp Number *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-slate-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 placeholder-gray-400"
+                      placeholder="+1 (555) 000-0000"
                     />
                   </div>
                 </div>
