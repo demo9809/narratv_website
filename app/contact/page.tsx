@@ -177,75 +177,80 @@ export default function ContactPage() {
                   className="w-full px-4 py-3 rounded-lg bg-background-elevated border border-subtle-border text-text-primary focus:border-primary focus:outline-none transition-colors duration-300"
                 />
               </div>
-              type="text"
-              id="company"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg bg-background-elevated border border-subtle-border text-text-primary focus:border-primary focus:outline-none transition-colors duration-300"
-              />
-            </div>
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium text-text-primary mb-2">
+                  Company
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg bg-background-elevated border border-subtle-border text-text-primary focus:border-primary focus:outline-none transition-colors duration-300"
+                />
+              </div>
 
-            <div>
-              <label htmlFor="service" className="block text-sm font-medium text-text-primary mb-2">
-                Service Interested In
-              </label>
-              <select
-                id="service"
-                name="service"
-                value={formData.service}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg bg-background-elevated border border-subtle-border text-text-primary focus:border-primary focus:outline-none transition-colors duration-300"
+              <div>
+                <label htmlFor="service" className="block text-sm font-medium text-text-primary mb-2">
+                  Service Interested In
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg bg-background-elevated border border-subtle-border text-text-primary focus:border-primary focus:outline-none transition-colors duration-300"
+                >
+                  <option value="">Select a service</option>
+                  <option value="branding">Branding & Identity</option>
+                  <option value="creative-strategy">Creative Strategy</option>
+                  <option value="ad-campaigns">Ad Campaigns</option>
+                  <option value="digital-marketing">Digital Performance Marketing</option>
+                  <option value="video-production">Video Production</option>
+                  <option value="content-creation">Content Creation</option>
+                  <option value="ai-video">AI Video Production</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-2">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg bg-background-elevated border border-subtle-border text-text-primary focus:border-primary focus:outline-none transition-colors duration-300 resize-none"
+                  placeholder="Tell us about your project..."
+                />
+              </div>
+
+              <Button
+                type="submit"
+                size="lg"
+                fullWidth
+                disabled={status === 'submitting'}
               >
-                <option value="">Select a service</option>
-                <option value="branding">Branding & Identity</option>
-                <option value="creative-strategy">Creative Strategy</option>
-                <option value="ad-campaigns">Ad Campaigns</option>
-                <option value="digital-marketing">Digital Performance Marketing</option>
-                <option value="video-production">Video Production</option>
-                <option value="content-creation">Content Creation</option>
-                <option value="ai-video">AI Video Production</option>
-              </select>
-            </div>
+                {status === 'submitting' ? 'Sending...' : 'Send Message'}
+              </Button>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-2">
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={6}
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg bg-background-elevated border border-subtle-border text-text-primary focus:border-primary focus:outline-none transition-colors duration-300 resize-none"
-                placeholder="Tell us about your project..."
-              />
-            </div>
-
-            <Button
-              type="submit"
-              size="lg"
-              fullWidth
-              disabled={status === 'submitting'}
-            >
-              {status === 'submitting' ? 'Sending...' : 'Send Message'}
-            </Button>
-
-            {status === 'success' && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="p-4 rounded-lg bg-primary/10 border border-primary/20 text-primary text-center"
-              >
-                Thank you! We'll get back to you soon.
-              </motion.div>
-            )}
-          </form>
-        </motion.div>
-      </div>
-    </Section >
+              {status === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 rounded-lg bg-primary/10 border border-primary/20 text-primary text-center"
+                >
+                  Thank you! We'll get back to you soon.
+                </motion.div>
+              )}
+            </form>
+          </motion.div>
+        </div>
+      </Section >
     </>
   );
 }
