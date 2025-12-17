@@ -6,7 +6,7 @@ import { ContactFormData } from '@/lib/types';
 import ProjectInquiryEmail from '@/components/emails/ProjectInquiryEmail';
 import * as React from 'react';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+
 
 interface ActionState {
     success: boolean;
@@ -21,6 +21,8 @@ export async function sendEmail(formData: ContactFormData): Promise<ActionState>
         console.error('Missing RESEND_API_KEY');
         return { success: false, message: 'Configuration error: Missing API Key' };
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     try {
         console.log('Rendering email template...');
