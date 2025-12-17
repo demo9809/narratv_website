@@ -34,11 +34,11 @@ export async function sendEmail(formData: ContactFormData): Promise<ActionState>
             })
         );
 
-        console.log('Sending via Resend to:', ['labeeb@narratv.space', 'labeebchlkn@gmail.com']);
+        console.log('Sending via Resend to:', ['narratvthoughts@gmail.com']);
 
         const data = await resend.emails.send({
-            from: 'Narratv Space Web <contact@narratv.space>',
-            to: ['labeeb@narratv.space', 'labeebchlkn@gmail.com'],
+            from: 'Narratv Space Web <onboarding@resend.dev>',
+            to: ['narratvthoughts@gmail.com'],
             subject: `New Project Inquiry: ${name} from ${company}`,
             html: emailHtml,
         });
